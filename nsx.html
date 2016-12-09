@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Thể loại</title>
+  <title>Nhà sản xuất</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -175,7 +175,7 @@
       <div class="page-title">
         <div class="title_left">
           <h3>
-           Quản lí thể loại
+           Quản lí nhà sản xuất
 
          </h3>
 
@@ -204,7 +204,7 @@
                   
                   <button class="btn btn-success print" onClick="window.print();return false"><i class="glyphicon glyphicon-print"></i> Print</button>
                      <!-- <div class="gj-float-right"> -->
-                      <button id="btnAdd" type="button" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i>Thêm thể loại</button>
+                      <button id="btnAdd" type="button" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i>Thêm nhà sản xuất</button>
                     <!-- </div> -->
                 </form>
               </div>
@@ -223,7 +223,7 @@
                   <input type="number"  class="gj-frm-ctrl gj-width-240" id="matg">
                 </div>
                 <div class="gj-margin-top-10">
-                  <label for="tentg" class="gj-bold">Tên thể loại (*):</label>
+                  <label for="tentg" class="gj-bold">Tên NSX (*):</label>
                   <input type="text"  class="gj-frm-ctrl gj-width-240" id="tentg" />
                 </div>
                 
@@ -268,7 +268,7 @@
       columns: [
       { field: 'ID',title:'STT', width: 40,align:'center' },
       { field: 'matg', title: 'Mã ', sortable: true ,width: 70,align:'center'},
-      { field: 'tentg', title: 'Tên thể loại', sortable: true,align:'left' },
+      { field: 'tentg', title: 'Tên NSX', sortable: true,align:'left' },
       { field: 'tuychinh', title: 'Sửa',width: 50, tmpl: '<button class="glyphicon glyphicon-edit btn btn-primary"></button>', align: 'center', events: { 'click': Edit } },
       { field: 'tuychinh', title: 'Xóa',width: 50, tmpl: '<button class="glyphicon glyphicon-trash btn btn-danger"></button>', align: 'center', events: { 'click': Delete } }
       ],
