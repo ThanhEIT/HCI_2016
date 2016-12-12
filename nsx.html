@@ -219,12 +219,12 @@
               <input type="hidden" id="ID" />
               <form>
                 <div>
-                  <label for="matg" class="gj-bold">Mã (*):</label>
-                  <input type="number"  class="gj-frm-ctrl gj-width-240" id="matg">
+                  <label for="mansx" class="gj-bold">Mã (*):</label>
+                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="mansx">
                 </div>
                 <div class="gj-margin-top-10">
-                  <label for="tentg" class="gj-bold">Tên NSX (*):</label>
-                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="tentg" />
+                  <label for="tennsx" class="gj-bold">Tên NSX (*):</label>
+                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="tennsx" />
                 </div>
                 
                 
@@ -248,27 +248,23 @@
   $(document).ready(function () {
     var data, grid, dialog;
     data = [
-    { 'ID': 1, 'matg': 1001, 'tentg': 'Nguyễn Lê Phong'},
-    { 'ID': 2, 'matg': 3678, 'tentg': 'Huỳnh Phước Ngà'},
-    { 'ID': 3, 'matg': 1003, 'tentg': 'Trần Minh Tuấn'},
-    { 'ID': 4, 'matg': 7443, 'tentg': 'Trần Ngọc Cường'},
-    { 'ID': 5, 'matg': 1234, 'tentg': 'Nguyễn Thế Trường'},
-    { 'ID': 6, 'matg': 1051, 'tentg': 'Lê Chí Bảo'},
-    { 'ID': 7, 'matg': 3201, 'tentg': 'Âu Đình Bảo'},
-    { 'ID': 8, 'matg': 5401, 'tentg': 'Phan Thị Hòa'},
-    { 'ID': 9, 'matg': 6532, 'tentg': 'Phạm Văn Toàn'},
-    { 'ID': 10, 'matg': 6333, 'tentg': 'Nguyễn Thanh Trí'},
-    { 'ID': 11, 'matg': 6432, 'tentg': 'Đàm Quang Khoa'},
-    { 'ID': 12, 'matg': 7577, 'tentg': 'Lê Thành Long'},
-    { 'ID': 13, 'matg': 1965, 'tentg': 'Nguyễn Văn Tân'},
-    { 'ID': 14, 'matg': 8652, 'tentg': 'Hoàng Thị Tốt'}
+    { 'ID': 1, 'mansx': 'SX4010', 'tennsx': 'ROYAL'},
+    { 'ID': 2, 'mansx': 'SX4011', 'tennsx': 'NAPOLI'},
+    { 'ID': 3, 'mansx': 'SX4012', 'tennsx': 'USA'},
+    { 'ID': 4, 'mansx': 'SX4013', 'tennsx': 'ADIDAS'},
+    { 'ID': 5, 'mansx': 'SX4014', 'tennsx': 'THAILAN'},
+    { 'ID': 6, 'mansx': 'SX4015', 'tennsx': 'JAPANE'},
+    { 'ID': 7, 'mansx': 'SX4016', 'tennsx': 'VIETNAM'},
+    { 'ID': 8, 'mansx': 'SX4017', 'tennsx': 'CHINA'},
+    { 'ID': 9, 'mansx': 'SX4018', 'tennsx': 'VIETTIEN'},
+    { 'ID': 10, 'mansx': 'SX4019', 'tennsx': 'DUCATI'},
     ];
     grid = $('#grid').grid({
       dataSource: data,
       columns: [
       { field: 'ID',title:'STT', width: 40,align:'center' },
-      { field: 'matg', title: 'Mã ', sortable: true ,width: 70,align:'center'},
-      { field: 'tentg', title: 'Tên NSX', sortable: true,align:'left' },
+      { field: 'mansx', title: 'Mã ', sortable: true ,width: 200,align:'center'},
+      { field: 'tennsx', title: 'Tên NSX', sortable: true,align:'left' },
       { field: 'tuychinh', title: 'Sửa',width: 50, tmpl: '<button class="glyphicon glyphicon-edit btn btn-primary"></button>', align: 'center', events: { 'click': Edit } },
       { field: 'tuychinh', title: 'Xóa',width: 50, tmpl: '<button class="glyphicon glyphicon-trash btn btn-danger"></button>', align: 'center', events: { 'click': Delete } }
       ],
@@ -282,8 +278,8 @@
     });
     function Edit(e) {
       $('#ID').val(e.data.id);
-      $('#matg').val(e.data.record.matg);
-      $('#tentg').val(e.data.record.tentg);
+      $('#mansx').val(e.data.record.mansx);
+      $('#tennsx').val(e.data.record.tennsx);
       $('#dialog').dialog('open');
     }
     function Delete(e) {
@@ -299,16 +295,16 @@
     function Save() {
       if ($('#ID').val()) {
         var id = parseInt($('#ID').val());
-        grid.updateRow(id, { 'ID': id, 'matg': $('#matg').val(), 'tentg': $('#tentg').val()});
+        grid.updateRow(id, { 'ID': id, 'mansx': $('#mansx').val(), 'tennsx': $('#tennsx').val()});
       } else {
-        grid.addRow({ 'ID': grid.count(true) + 1, 'matg': $('#matg').val(), 'tentg': $('#tentg').val()});
+        grid.addRow({ 'ID': grid.count(true) + 1, 'mansx': $('#mansx').val(), 'tennsx': $('#tennsx').val()});
       }
       dialog.close();
     }
     $('#btnAdd').on('click', function () {
       $('#ID').val('');
-      $('#matg').val('');
-      $('#tentg').val('');
+      $('#mansx').val('');
+      $('#tennsx').val('');
       $('#dialog').dialog('open');
     });
     $('#btnSave').on('click', Save);
@@ -319,7 +315,7 @@
       var query, result;
       query = $('#txtQuery').val();
       result = $.grep(data, function (e) {
-        return e.matg.indexOf(query) > -1 || e.tentg.indexOf(query) > -1;
+        return e.mansx.indexOf(query) > -1 || e.tennsx.indexOf(query) > -1;
       });
       grid.render(result);
     });

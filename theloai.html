@@ -219,12 +219,12 @@
               <input type="hidden" id="ID" />
               <form>
                 <div>
-                  <label for="matg" class="gj-bold">Mã (*):</label>
-                  <input type="number"  class="gj-frm-ctrl gj-width-240" id="matg">
+                  <label for="matheloai" class="gj-bold">Mã (*):</label>
+                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="matheloai">
                 </div>
                 <div class="gj-margin-top-10">
-                  <label for="tentg" class="gj-bold">Tên thể loại (*):</label>
-                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="tentg" />
+                  <label for="tentheloai" class="gj-bold">Tên thể loại (*):</label>
+                  <input type="text"  class="gj-frm-ctrl gj-width-240" id="tentheloai" />
                 </div>
                 
                 
@@ -248,27 +248,23 @@
   $(document).ready(function () {
     var data, grid, dialog;
     data = [
-    { 'ID': 1, 'matg': 1001, 'tentg': 'Nguyễn Lê Phong'},
-    { 'ID': 2, 'matg': 3678, 'tentg': 'Huỳnh Phước Ngà'},
-    { 'ID': 3, 'matg': 1003, 'tentg': 'Trần Minh Tuấn'},
-    { 'ID': 4, 'matg': 7443, 'tentg': 'Trần Ngọc Cường'},
-    { 'ID': 5, 'matg': 1234, 'tentg': 'Nguyễn Thế Trường'},
-    { 'ID': 6, 'matg': 1051, 'tentg': 'Lê Chí Bảo'},
-    { 'ID': 7, 'matg': 3201, 'tentg': 'Âu Đình Bảo'},
-    { 'ID': 8, 'matg': 5401, 'tentg': 'Phan Thị Hòa'},
-    { 'ID': 9, 'matg': 6532, 'tentg': 'Phạm Văn Toàn'},
-    { 'ID': 10, 'matg': 6333, 'tentg': 'Nguyễn Thanh Trí'},
-    { 'ID': 11, 'matg': 6432, 'tentg': 'Đàm Quang Khoa'},
-    { 'ID': 12, 'matg': 7577, 'tentg': 'Lê Thành Long'},
-    { 'ID': 13, 'matg': 1965, 'tentg': 'Nguyễn Văn Tân'},
-    { 'ID': 14, 'matg': 8652, 'tentg': 'Hoàng Thị Tốt'}
+    { 'ID': 1, 'matheloai': 'TL3010', 'tentheloai': 'MŨ BẢO HỘ'},
+    { 'ID': 2, 'matheloai': 'TL3011', 'tentheloai': 'GĂNG TAY'},
+    { 'ID': 3, 'matheloai': 'TL3012', 'tentheloai': 'ÁO BẢO HỘ'},
+    { 'ID': 4, 'matheloai': 'TL3013', 'tentheloai': 'QUẦN BẢO HỘ'},
+    { 'ID': 5, 'matheloai': 'TL3014', 'tentheloai': 'KÍNH BẢO VỆ'},
+    { 'ID': 6, 'matheloai': 'TL3015', 'tentheloai': 'GIÀY MOTO'},
+    { 'ID': 7, 'matheloai': 'TL3016', 'tentheloai': 'LỀU TRẠI'},
+    { 'ID': 8, 'matheloai': 'TL3017', 'tentheloai': 'CAMERE HÀNH TRÌNH'},
+    { 'ID': 9, 'matheloai': 'TL3018', 'tentheloai': 'PHỤ KIỆN KHÁC'},
+    { 'ID': 10, 'matheloai': 'TL3019', 'tentheloai': 'ĐỒ TỰ VỆ'},   
     ];
     grid = $('#grid').grid({
       dataSource: data,
       columns: [
       { field: 'ID',title:'STT', width: 40,align:'center' },
-      { field: 'matg', title: 'Mã ', sortable: true ,width: 70,align:'center'},
-      { field: 'tentg', title: 'Tên thể loại', sortable: true,align:'left' },
+      { field: 'matheloai', title: 'Mã ', sortable: true ,width: 200,align:'center'},
+      { field: 'tentheloai', title: 'Tên thể loại', sortable: true,align:'left' },
       { field: 'tuychinh', title: 'Sửa',width: 50, tmpl: '<button class="glyphicon glyphicon-edit btn btn-primary"></button>', align: 'center', events: { 'click': Edit } },
       { field: 'tuychinh', title: 'Xóa',width: 50, tmpl: '<button class="glyphicon glyphicon-trash btn btn-danger"></button>', align: 'center', events: { 'click': Delete } }
       ],
@@ -282,8 +278,8 @@
     });
     function Edit(e) {
       $('#ID').val(e.data.id);
-      $('#matg').val(e.data.record.matg);
-      $('#tentg').val(e.data.record.tentg);
+      $('#matheloai').val(e.data.record.matheloai);
+      $('#tentheloai').val(e.data.record.tentheloai);
       $('#dialog').dialog('open');
     }
     function Delete(e) {
@@ -299,16 +295,16 @@
     function Save() {
       if ($('#ID').val()) {
         var id = parseInt($('#ID').val());
-        grid.updateRow(id, { 'ID': id, 'matg': $('#matg').val(), 'tentg': $('#tentg').val()});
+        grid.updateRow(id, { 'ID': id, 'matheloai': $('#matheloai').val(), 'tentheloai': $('#tentheloai').val()});
       } else {
-        grid.addRow({ 'ID': grid.count(true) + 1, 'matg': $('#matg').val(), 'tentg': $('#tentg').val()});
+        grid.addRow({ 'ID': grid.count(true) + 1, 'matheloai': $('#matheloai').val(), 'tentheloai': $('#tentheloai').val()});
       }
       dialog.close();
     }
     $('#btnAdd').on('click', function () {
       $('#ID').val('');
-      $('#matg').val('');
-      $('#tentg').val('');
+      $('#matheloai').val('');
+      $('#tentheloai').val('');
       $('#dialog').dialog('open');
     });
     $('#btnSave').on('click', Save);
@@ -319,7 +315,7 @@
       var query, result;
       query = $('#txtQuery').val();
       result = $.grep(data, function (e) {
-        return e.matg.indexOf(query) > -1 || e.tentg.indexOf(query) > -1;
+        return e.matheloai.indexOf(query) > -1 || e.tentheloai.indexOf(query) > -1;
       });
       grid.render(result);
     });

@@ -224,7 +224,15 @@
                         <select class="form-control">
                          <option></option>
                         <option>Mũ bảo hộ</option>
-                  <option>Khác</option>
+                        <option>Găng tay</option>
+						<option>Áo bảo hộ</option>
+                        <option>Kính bảo vệ</option>
+						<option>Giày moto</option>
+                        <option>Camera hành trình</option>
+						<option>Lều trại</option>
+                        <option>Đồ tự vệ</option>
+						<option>Phụ kiện khác</option>
+                        <option>Khác</option>
                         </select>
                       </div>
                     </div>
@@ -234,6 +242,7 @@
                         <select class="form-control">
                          <option></option>
                         <option>Royal</option>
+						<option>Napoli</option>
                   <option>Khác</option>
                         </select>
                       </div>
@@ -321,6 +330,10 @@
                   <label for="danhmuc" class="gj-bold">Danh mục:</label>
                   <input type="text" class="gj-frm-ctrl gj-width-240" id="danhmuc" />
                 </div>
+				<div class="gj-margin-top-10">
+                  <label for="NSX" class="gj-bold">Nhà sản xuất:</label>
+                  <input type="text" class="gj-frm-ctrl gj-width-240" id="NSX" />
+                </div>
                 <div class="gj-margin-top-10">
                   <label for="ngay" class="gj-bold">Ngày:</label>
                   <input type="text" class="gj-frm-ctrl gj-width-240" id="ngay" />
@@ -345,10 +358,17 @@
   $(document).ready(function () {
     var data, grid, dialog;
     data = [
-    { 'ID': 1, 'masanpham': '1001', 'tensanpham': 'Mũ 1/2','kho':150,'gia':150000,'danhmuc':'Mũ bảo hiểm','ngay':'9/11/2016'},
-    { 'ID': 2, 'masanpham': '1002', 'tensanpham': 'Mũ 3/4','kho':150,'gia':160000,'danhmuc':'Mũ bảo hiểm','ngay':'10/11/2016'},
-    { 'ID': 3, 'masanpham': '1003', 'tensanpham': 'Mũ Fullface','kho':150,'gia':200000,'danhmuc':'Mũ bảo hiểm','ngay':'11/11/2016'},
-    ];
+    { 'ID': 1, 'masanpham': 'SP2010', 'tensanpham': 'MŨ 1/2 ROYAL','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'ROYAL','ngay':'9/11/2016'},
+    { 'ID': 2, 'masanpham': 'SP2011', 'tensanpham': 'MŨ 3/4 NAPOLI','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'NAPOLI','ngay':'9/11/2016'},
+	{ 'ID': 3, 'masanpham': 'SP2012', 'tensanpham': 'MŨ 1/2 NAPOLI','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'NAPOLI','ngay':'9/11/2016'},
+    { 'ID': 4, 'masanpham': 'SP2013', 'tensanpham': 'MŨ 3/4 ROYAL','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'ROYAL','ngay':'9/11/2016'},
+	{ 'ID': 5, 'masanpham': 'SP2014', 'tensanpham': 'MŨ 3/4 USA','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'USA','ngay':'9/11/2016'},
+    { 'ID': 6, 'masanpham': 'SP2015', 'tensanpham': 'MŨ FULLFACE','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'JAPANE','ngay':'9/11/2016'},
+	{ 'ID': 7, 'masanpham': 'SP2016', 'tensanpham': 'MŨ TRẺ EM','kho':1000,'gia':1500,'danhmuc':'MŨ BẢO HỘ','NSX':'VIETNAM','ngay':'9/11/2016'},
+    { 'ID': 8, 'masanpham': 'SP2017', 'tensanpham': 'GĂNG TAY PRO','kho':1000,'gia':1500,'danhmuc':'GĂNG TAY','NSX':'CHINA','ngay':'9/11/2016'},
+    { 'ID': 9, 'masanpham': 'SP2018', 'tensanpham': 'GĂNG TAY MOSNTER','kho':1000,'gia':1500,'danhmuc':'GĂNG TAY','NSX':'VIETTIEN','ngay':'9/11/2016'},
+    { 'ID': 10, 'masanpham': 'SP2019', 'tensanpham': 'ÁO GIÁP','kho':1000,'gia':1500,'danhmuc':'ÁO BẢO HỘ','NSX':'DUCATI','ngay':'9/11/2016'},
+	];
     grid = $('#grid').grid({
       dataSource: data,
       columns: [
@@ -358,6 +378,7 @@
       { field: 'kho', title: 'Kho', sortable: true },
       { field: 'gia', title: 'Giá', sortable: true },
 	  { field: 'danhmuc', title: 'Danh mục', sortable: true },
+	  { field: 'NSX', title: 'Nhà sản xuất', sortable: true },
 	  { field: 'ngay', title: 'Ngày', sortable: true },
       { field: 'tuychinh', title: 'Sửa',width: 50, tmpl: '<button class="glyphicon glyphicon-edit btn btn-primary"></button>', align: 'center', events: { 'click': Edit } },
       { field: 'tuychinh', title: 'Xóa',width: 50, tmpl: '<button class="glyphicon glyphicon-trash btn btn-danger"></button>', align: 'center', events: { 'click': Delete } }
